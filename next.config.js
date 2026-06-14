@@ -6,6 +6,11 @@ const nextConfig = {
       { protocol: 'https', hostname: 'cdn-images.dzcdn.net' },
     ],
   },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '50mb',
+    },
+  },
 }
 
 module.exports = nextConfig
