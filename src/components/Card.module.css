@@ -1,0 +1,10 @@
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.solid {
+  background: var(--bg-card-solid);
+}

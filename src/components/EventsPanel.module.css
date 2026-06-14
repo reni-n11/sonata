@@ -1,0 +1,140 @@
+.btnWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 248px;
+  background: var(--bg-events);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.pill {
+  background: var(--bg-event-item);
+  border: none;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow);
+  padding: 20px 32px;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  max-width: 450px;
+  transition: background .15s;
+  color: #000;
+}
+.pill:hover { background: #ddd; }
+
+/* Expanded panel */
+.panel {
+  position: relative;
+  background: var(--bg-events);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.close {
+  position: absolute;
+  top: 14px; right: 18px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #000;
+  line-height: 1;
+}
+
+.heading {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  padding-right: 24px;
+}
+
+.inputRow {
+  display: flex;
+  gap: 10px;
+}
+.input {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: 1px solid #bbb;
+  font-size: 15px;
+  background: var(--bg-event-item);
+  font-family: var(--font-body);
+}
+.input:focus { outline: 2px solid #888; }
+
+.findBtn {
+  padding: 10px 24px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background .15s;
+}
+.findBtn:hover:not(:disabled) { background: #333; }
+.findBtn:disabled { opacity: .5; cursor: default; }
+
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 0;
+}
+
+.divider { background: #aaa; margin: 0 12px; }
+
+.colTitle {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  padding: 8px 0 12px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.eventCard {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: var(--bg-event-item);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 12px 18px;
+  transition: background .15s;
+}
+.eventCard:hover { background: #ddd; }
+
+.eventDate  { font-size: 16px; font-weight: 400; }
+.eventName  { font-size: 16px; font-weight: 400; }
+.eventVenue { font-size: 14px; color: #444; }
+
+.empty { font-size: 15px; color: #666; padding: 8px 0; }
+
+@media (max-width: 768px) {
+  .cols        { grid-template-columns: 1fr; }
+  .divider     { display: none; }
+  .pill        { font-size: 18px; padding: 16px 20px; }
+}
+
+.locatingText {
+  font-size: 18px;
+  font-weight: 500;
+  color: #444;
+}
+
+.locError {
+  color: #c0392b;
+  font-size: 14px;
+  text-align: center;
+  padding: 0 20px;
+}

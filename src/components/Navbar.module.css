@@ -1,0 +1,106 @@
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 64px;
+  background: var(--bg-nav);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.links {
+  display: flex;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 98px;
+  height: 64px;
+  background: var(--bg-nav-link);
+  box-shadow: var(--shadow);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 40px;
+  transition: background .15s;
+}
+.link:hover { background: #e0e0e0; }
+
+.avatar {
+  position: absolute;
+  right: 0; top: 0;
+  width: 98px; height: 64px;
+  background: var(--bg-nav-link);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 -4px 2px rgba(0,0,0,.25);
+}
+.avatarCircle {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: #bbb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #555;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  position: absolute;
+  left: 16px;
+  background: none;
+  border: none;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bar1, .bar2, .bar3,
+.bar1open, .bar2open, .bar3open {
+  display: block;
+  width: 24px; height: 2px;
+  background: #000;
+  border-radius: 2px;
+  transition: transform .3s, opacity .3s;
+}
+.bar1open  { transform: translateY(7px) rotate(45deg); }
+.bar2open  { opacity: 0; }
+.bar3open  { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile menu */
+.mobileMenu {
+  display: none;
+  position: fixed;
+  top: 64px; left: 0; right: 0;
+  background: var(--bg-nav);
+  flex-direction: column;
+  z-index: 99;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+}
+.mobileMenuOpen { max-height: 160px; }
+
+.mobileLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  font-size: 18px;
+  border-top: 1px solid rgba(0,0,0,.1);
+  background: var(--bg-nav-link);
+}
+.mobileLink:hover { background: #e0e0e0; }
+
+@media (max-width: 1024px) {
+  .links      { display: none; }
+  .hamburger  { display: flex; }
+  .mobileMenu { display: flex; }
+}
