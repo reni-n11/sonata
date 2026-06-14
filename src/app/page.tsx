@@ -31,13 +31,26 @@ export default function HomePage() {
         }
       }
 
-      const res  = await fetch('/api/analyse', { method: 'POST', body: fd })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error ?? 'Analysis failed')
+      // For file uploads, call HF directly to bypass Vercel's 4.5MB limit
+      // For search/link, go through Next.js proxy as normal
+      const endpoint = file
+        ? `${process.env.NEXT_PUBLIC_HF_BACKEND_URL}/api/analyse`
+        : '/api/analyse'
+
+      const res  = await fetch(endpoint, { method: 'POST', body: fd })
+      const text = await res.text()
+
+      let data
+      try {
+        data = JSON.parse(text)
+      } catch {
+        throw new Error(`Backend returned: ${text.slice(0, 100)}`)
+      }
+
+      if (!res.ok || data.error) throw new Error(data.error ?? 'Analysis failed')
 
       if (file) {
-        const blobUrl = URL.createObjectURL(file)
-        sessionStorage.setItem('sonata_audio_url', blobUrl)
+        sessionStorage.setItem('sonata_audio_url', URL.createObjectURL(file))
       } else {
         sessionStorage.removeItem('sonata_audio_url')
       }
