@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Sonata — Music Genre Classifier',
+  title: 'Sonata - AI Song Genre Identifier',
   description: 'Discover more about music',
 }
 
