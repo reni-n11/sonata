@@ -1,7 +1,5 @@
-# Sonata — Music Genre Classifier
+# Sonata - AI Music Genre Identifier
 
-Next.js 14 frontend matching the Figma design.
-Deploy to Vercel in one click.
 
 ## Local development
 
