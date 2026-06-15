@@ -136,7 +136,7 @@
 
 /* Footer */
 .footer {
-  background: linear-gradient(to right, #afafaf, #e8e8e8 39%, #afafaf);
+  background: linear-gradient(to right, #210038, #4E63D4 39%, #210038);
   min-height: 157px;
   display: flex;
   align-items: center;

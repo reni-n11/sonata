@@ -1,15 +1,15 @@
 
 
 :root {
-  --bg-page:       #b1b1b1;
-  --bg-nav:        #e3e3e3;
-  --bg-nav-link:   #f2f2f2;
-  --bg-card:       radial-gradient(ellipse at center, #fafafa 0%, #cdcdcd 100%);
-  --bg-card-solid: #cdcdcd;
-  --bg-tab-active: #f3f3f3;
-  --bg-tab-dim:    #e8e8e8;
-  --bg-events:     #cdcdcd;
-  --bg-event-item: #e8e8e8;
+  --bg-page:       #867FCC;
+  --bg-nav:        #210038;
+  --bg-nav-link:   #210038;
+  --bg-card:       radial-gradient(ellipse at center, #white 0%, #c9cdfe 100%);
+  --bg-card-solid: #2834bd;
+  --bg-tab-active: white;
+  --bg-tab-dim:    #bcc0ef;
+  --bg-events:     #c9cdfe;
+  --bg-event-item: white;
   --shadow:        0 4px 4px rgba(0,0,0,.25);
   --shadow-up:     0 -2px 4px rgba(0,0,0,.25);
   --radius:        30px;
