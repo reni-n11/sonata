@@ -4,7 +4,11 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Sonata - AI Song Genre Identifier',
   description: 'Discover more about music',
+  icons: {
+    icon: 'favicon.png'
+  }
 }
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

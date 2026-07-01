@@ -15,6 +15,11 @@ interface EventsPanelProps {
   subgenre: string | null
 }
 
+function capitalize(str: string | null | undefined): string {
+  if (!str) return ''
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
 export default function EventsPanel({ genre, subgenre }: EventsPanelProps) {
   const [stage,       setStage]       = useState<'idle' | 'locating' | 'results' | 'error'>('idle')
   const [loading,     setLoading]     = useState(false)
@@ -88,7 +93,7 @@ export default function EventsPanel({ genre, subgenre }: EventsPanelProps) {
           onClick={handleFindEvents}
           type="button"
         >
-          Find {genre ?? 'genre'} and {subgenre ?? 'subgenre'} events near you
+          Find {capitalize(genre ?? 'genre')} and {capitalize(subgenre ?? 'subgenre')} events near you
         </button>
       </div>
     )
@@ -119,7 +124,7 @@ export default function EventsPanel({ genre, subgenre }: EventsPanelProps) {
   return (
     <aside className={styles.panel} aria-label="Nearby events">
       <h2 className={styles.heading}>
-        Find {genre ?? 'genre'} and {subgenre ?? 'subgenre'} events near you
+        Find {capitalize(genre ?? 'genre')} and {capitalize(subgenre ?? 'subgenre')} events near you
       </h2>
 
       <div className={styles.cols}>

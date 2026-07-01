@@ -127,7 +127,7 @@ export default function ResultsPage() {
             <ol className={styles.rankList}>
               {top5genres.map((item: [string, number], i: number) => (
                 <li key={i} className={i === 0 ? styles.rankFirst : styles.rankItem}>
-                  {item[0]} ({item[1]}%)
+                  {capitalize(item[0])} ({item[1]}%)
                 </li>
               ))}
             </ol>
