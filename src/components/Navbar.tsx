@@ -22,7 +22,7 @@ export default function Navbar() {
         </button>
 
         <nav className={styles.links} aria-label="Main navigation">
-          <Link href="/"       className={styles.link}>About</Link>
+          <Link href="/about"       className={styles.link}>About</Link>
         </nav>
 
       </header>
@@ -33,7 +33,7 @@ export default function Navbar() {
         aria-label="Mobile navigation"
       >
         <Link href="/"        className={styles.mobileLink} onClick={() => setOpen(false)}>Home</Link>
-        <Link href="/contact" className={styles.mobileLink} onClick={() => setOpen(false)}>Contact</Link>
+        <Link href="/about"  className={styles.mobileLink} onClick={() => setOpen(false)}>About</Link>
       </nav>
     </>
   )

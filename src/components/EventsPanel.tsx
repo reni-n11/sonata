@@ -52,8 +52,8 @@ export default function EventsPanel({ genre, subgenre }: EventsPanelProps) {
             return
           }
 
-          const res  = await fetch(
-            `/api/events?genre=${encodeURIComponent(genre ?? '')}&subgenre=${encodeURIComponent(subgenre ?? '')}&country=${encodeURIComponent(code)}`
+          const res = await fetch(
+            `/api/events?genre=${encodeURIComponent(genre ?? '')}&subgenre=${encodeURIComponent(subgenre ?? '')}&country=${encodeURIComponent(code)}&lat=${latitude}&lng=${longitude}`
           )
           const data = await res.json()
           setGenreEvts(data.genreEvents    ?? [])

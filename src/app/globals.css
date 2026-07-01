@@ -4,7 +4,7 @@
   --bg-page:       #867FCC;
   --bg-nav:        #210038;
   --bg-nav-link:   #210038;
-  --bg-card:       radial-gradient(ellipse at center, #white 0%, #c9cdfe 100%);
+  --bg-card:       radial-gradient(ellipse at center, white 0%, #c9cdfe 100%);
   --bg-card-solid: #2834bd;
   --bg-tab-active: white;
   --bg-tab-dim:    #bcc0ef;

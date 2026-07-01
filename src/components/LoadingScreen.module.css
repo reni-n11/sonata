@@ -1,0 +1,181 @@
+/* ── Full-viewport overlay ───────────────────────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 16px;
+}
+
+/* ── Card ────────────────────────────────────────────── */
+.wrap {
+  width: 100%;
+  max-width: 540px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0d0d0d;
+  border-radius: 20px;
+  gap: 28px;
+  padding: 48px 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 60%, rgba(124, 58, 237, 0.14) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Title ───────────────────────────────────────────── */
+.titleArea {
+  text-align: center;
+  z-index: 1;
+}
+
+.titleArea h1 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0.02em;
+  margin-bottom: 6px;
+  font-family: inherit;
+}
+
+.titleArea p {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.1em;
+  font-family: inherit;
+}
+
+/* ── Waveform ────────────────────────────────────────── */
+.waveform {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 80px;
+  z-index: 1;
+}
+
+.bar {
+  width: 5px;
+  border-radius: 3px;
+  background: #7c3aed;
+  animation: wave 1.3s ease-in-out infinite;
+  animation-delay: var(--delay);
+  transform-origin: center;
+}
+
+@keyframes wave {
+  0%, 100% {
+    height: 5px;
+    background: rgba(124, 58, 237, 0.4);
+  }
+  50% {
+    height: var(--peak);
+    background: #a78bfa;
+  }
+}
+
+/* ── Genre tags ──────────────────────────────────────── */
+.genreTags {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 1;
+  max-width: 440px;
+}
+
+.tag {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 0.5px solid rgba(167, 139, 250, 0.3);
+  color: rgba(167, 139, 250, 0.7);
+  letter-spacing: 0.05em;
+  animation: tagpulse 2.5s ease-in-out infinite;
+  animation-delay: var(--tag-delay);
+  font-family: inherit;
+}
+
+@keyframes tagpulse {
+  0%, 100% {
+    border-color: rgba(167, 139, 250, 0.2);
+    color: rgba(167, 139, 250, 0.35);
+  }
+  50% {
+    border-color: rgba(167, 139, 250, 0.65);
+    color: rgba(167, 139, 250, 0.95);
+  }
+}
+
+/* ── Progress bar ────────────────────────────────────── */
+.progressTrack {
+  width: 240px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #7c3aed, #a78bfa);
+  animation: progress 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  width: 0%;
+}
+
+@keyframes progress {
+  0%   { width: 0%;   opacity: 1; }
+  85%  { width: 100%; opacity: 1; }
+  100% { width: 100%; opacity: 0; }
+}
+
+/* ── Status text ─────────────────────────────────────── */
+.status {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.06em;
+  z-index: 1;
+  animation: blink 2s ease-in-out infinite;
+  font-family: inherit;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.75; }
+}
+
+/* ── Reduced motion ──────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .bar, .tag, .progressFill, .status {
+    animation: none;
+  }
+  .bar          { height: 20px; background: #7c3aed; }
+  .progressFill { width: 60%; }
+}
+
+/* ── Mobile ──────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .wrap {
+    min-height: 360px;
+    padding: 36px 20px;
+    gap: 22px;
+  }
+  .waveform { gap: 3px; }
+  .bar      { width: 4px; }
+}

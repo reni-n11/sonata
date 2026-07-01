@@ -6,16 +6,18 @@
 .logo {
   text-align: center;
   padding: 20px 0 10px;
+  color:white;
 }
 .wordmark {
   font-family: var(--font-display);
   font-size: 96px;
   line-height: 1;
-  color: #000;
+  color: white;
 }
 .tagline {
   font-size: 13px;
   margin-top: 4px;
+  color: white;
 }
 
 /* Title */
@@ -40,6 +42,7 @@
   text-shadow: 4px 3px 4px rgba(0,0,0,.25);
   padding: 6px 0;
   z-index: 1;
+  color: white;
 }
 
 /* Grids */
@@ -136,7 +139,7 @@
 
 /* Footer */
 .footer {
-  background: linear-gradient(to right, #210038, #4E63D4 39%, #210038);
+  background: linear-gradient(to right, #210038, #4E63D4 50%, #210038);
   min-height: 157px;
   display: flex;
   align-items: center;
@@ -145,6 +148,7 @@
   font-size: 14px;
   line-height: 1.9;
   padding: 20px;
+  color: #C9CDFE;
 }
 
 /* Responsive */

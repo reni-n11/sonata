@@ -92,7 +92,7 @@ export default function ResultsPage() {
 
         {/* Logo */}
         <div className={styles.logo}>
-          <span className={styles.wordmark}>Sonata</span>
+          <span className={styles.wordmark}><a href="/">Sonata</a></span>
           <p className={styles.tagline}>Discover more about music</p>
         </div>
 
@@ -232,7 +232,7 @@ export default function ResultsPage() {
         <div>
           <p>Sonata</p>
           <p>&nbsp;</p>
-          <p><a href="/"       className={styles.link}>Home</a></p>
+          <p><a href="/"       className={styles.link}>Home</a> | <a href="/about" className={styles.link}>About</a></p>
           <p>&nbsp;</p>
           <p>Email: 178knr@unibit.bg</p>
           <p>&nbsp;</p>

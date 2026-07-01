@@ -20,13 +20,16 @@
   width: 98px;
   height: 64px;
   background: var(--bg-nav-link);
-  box-shadow: var(--shadow);
   font-size: 20px;
   font-weight: 400;
   line-height: 40px;
   transition: background .15s;
+  color: #C9CDFE;
 }
-.link:hover { background: #e0e0e0; }
+.link:hover {
+  background: #e0e0e0; 
+  color: #210038;
+}
 
 .avatar {
   position: absolute;

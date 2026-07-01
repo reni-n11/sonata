@@ -2,15 +2,16 @@
 import { useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import Navbar from '@/components/Navbar'
+import LoadingScreen from '@/components/LoadingScreen'
 import styles from './page.module.css'
 
 export default function HomePage() {
-  const router  = useRouter()
-  const fileRef = useRef<HTMLInputElement>(null)
-  const [file,    setFile]    = useState<File | null>(null)
-  const [query,   setQuery]   = useState('')
-  const [loading, setLoading] = useState(false)
-  const [error,   setError]   = useState('')
+  const router   = useRouter()
+  const fileRef  = useRef<HTMLInputElement>(null)
+  const [file,     setFile]     = useState<File | null>(null)
+  const [query,    setQuery]    = useState('')
+  const [loading,  setLoading]  = useState(false)
+  const [error,    setError]    = useState('')
   const [dragging, setDragging] = useState(false)
 
   async function handleAnalyse() {
@@ -31,8 +32,6 @@ export default function HomePage() {
         }
       }
 
-      // For file uploads, call HF directly to bypass Vercel's 4.5MB limit
-      // For search/link, go through Next.js proxy as normal
       const endpoint = file
         ? `${process.env.NEXT_PUBLIC_HF_BACKEND_URL}/api/analyse`
         : '/api/analyse'
@@ -68,19 +67,27 @@ export default function HomePage() {
     e.preventDefault()
     setDragging(false)
     const dropped = e.dataTransfer.files[0]
-    if (dropped && (dropped.type === 'audio/mpeg' || dropped.type === 'audio/wav' || dropped.name.endsWith('.mp3') || dropped.name.endsWith('.wav'))) {
+    if (dropped && (
+      dropped.type === 'audio/mpeg' ||
+      dropped.type === 'audio/wav'  ||
+      dropped.name.endsWith('.mp3') ||
+      dropped.name.endsWith('.wav')
+    )) {
       setFile(dropped)
     }
   }
 
   return (
     <>
+      {/* Full-viewport loading overlay */}
+      {loading && <LoadingScreen />}
+
       <Navbar />
       <main className={styles.page}>
 
         {/* Logo */}
         <div className={styles.logo}>
-          <span className={styles.wordmark}>Sonata</span>
+          <span className={styles.wordmark}><a href="/">Sonata</a></span>
           <p className={styles.tagline}>Discover more about music</p>
         </div>
 
@@ -149,14 +156,14 @@ export default function HomePage() {
 
         {error && <p className={styles.error} role="alert">{error}</p>}
 
-        {/* Analyse button */}
+        {/* Analyse button — always visible, not disabled during loading */}
         <button
           className={styles.analyseBtn}
           onClick={handleAnalyse}
           disabled={loading}
           type="button"
         >
-          {loading ? 'Analysing…' : 'Analyze'}
+          Analyze
         </button>
 
         {/* Waveform decoration */}
@@ -180,11 +187,11 @@ export default function HomePage() {
           </div>
           <div className={styles.featureItem}>
             <span className={styles.star} aria-hidden>☆</span>
-            <span>Recommended songs based on the subgenre</span>
+            <span>Recommended songs</span>
           </div>
           <div className={styles.featureItem}>
             <span className={styles.star} aria-hidden>☆</span>
-            <span>Concerts and events near you based on the subgenre</span>
+            <span>Concerts and events near you</span>
           </div>
         </div>
 
@@ -194,10 +201,9 @@ export default function HomePage() {
         <div>
           <p>Sonata</p>
           <p>&nbsp;</p>
-          <p>Home | About | Contact</p>
+          <p><a href="/" className={styles.link}>Home</a> | <a href="/about" className={styles.link}>About</a></p>
           <p>&nbsp;</p>
-          <p>Email: info@example.com</p>
-          <p>Phone: +359 XXX XXX XXX</p>
+          <p>Email: 178knr@unibit.bg</p>
           <p>&nbsp;</p>
           <p>© 2026 Sonata</p>
         </div>
